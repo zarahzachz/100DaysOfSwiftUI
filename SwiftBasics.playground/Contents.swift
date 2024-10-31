@@ -58,3 +58,29 @@ let num = 0.1 + 0.2
 var castor = "Nicolas Cage"
 castor = "John Travolta"
 // castor = 5
+
+// Day 2 - Booleans, string interpolation, and checkpoint 1
+
+let fileName = "paris.jpg"
+fileName.hasSuffix(".jpg")
+
+number.isMultiple(of: 3)
+
+var isAuthenticated = false
+isAuthenticated.toggle()
+isAuthenticated.toggle()
+
+let strOne = "Hello, "
+let strTwo = "World!"
+let strThree = strOne + strTwo
+
+let artistName = "Taylor"
+let artistAge = 31
+let artistIntro = "Hello, my name is \(artistName) and I'm \(artistAge + 3) years old."
+
+// Checkpoint 1
+
+let tempInCelcius = 26
+let tempInFerenheit = (tempInCelcius * 9) / 5 + 32
+
+print("It's \(tempInCelcius)°C, or \(tempInFerenheit)°F today.")
