@@ -84,3 +84,49 @@ let tempInCelcius = 26
 let tempInFerenheit = (tempInCelcius * 9) / 5 + 32
 
 print("It's \(tempInCelcius)°C, or \(tempInFerenheit)°F today.")
+
+// Day 3 - Arrays, dictionaries, sets, and enums
+
+var beatles = ["John", "Paul", "George", "Ringo"]
+var numbers = [3, 1, 4, 2]
+
+beatles[0]
+beatles[0] = "Jack"
+beatles
+beatles.append("Mark")
+
+var score2 = Array<Int>()
+score2 = [Int]()
+
+beatles.count
+beatles.contains("John")
+beatles.remove(at: 4)
+beatles.contains("Mark")
+beatles.sorted()
+beatles.reversed()
+
+var employee = ["Bob Belcher", "46", "Head chef", "Wonder Wharf"]
+print("Employee name: \(employee[0])")
+print("Employee title: \(employee[2])")
+
+var employee2 = ["name": "Bob Belcher", "age": "46", "title": "Head chef", "location": "Wonder Wharf"]
+employee2["name"]
+employee2["location"]
+employee2["age"]
+
+// Dictionary order changes each time its called - just like a Set
+
+print("\(employee2["name", default: "Unknown"])")
+
+var actors = Set(["Jude Law", "Leonardo DiCaprio", "Brad Pitt", "Robert De Niro"])
+actors.insert("Denzel Washington")
+actors.contains("Robert De Niro")
+actors.remove("Brad Pitt")
+actors.sorted()
+
+enum TeenageMutantNinjaTurtles {
+    case leonardo, donatello, raphael, michelangelo
+}
+
+var turtle2 = TeenageMutantNinjaTurtles.donatello
+turtle2 = .raphael
