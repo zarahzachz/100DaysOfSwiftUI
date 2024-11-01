@@ -142,3 +142,29 @@ userName = "foobar8008"
 
 let arrayOfStrings = ["Happy", "happy", "joy", "joy"]
 print("There are \(arrayOfStrings.count) items in the array. There are \(Set(arrayOfStrings).count) unique items in the array.")
+
+// Day 5 - If, switch, and the ternary operator
+
+var numbers5 = [1, 2, 3]
+numbers5.append(4)
+if (numbers5.count > 3) {
+    numbers5.remove(at: 0)
+}
+numbers5
+
+enum TransportOption {
+    case airplane, helicopter, bicycle, car, scooter
+}
+
+let transport = TransportOption.airplane
+
+switch transport {
+    case .airplane, .helicopter:
+        print("Let's fly!")
+    case .bicycle:
+        print("I hope there's a bike path.")
+    case .car:
+        print("Time for some traffic!")
+    case .scooter:
+        print("Gonna rent a scooter.")
+}
