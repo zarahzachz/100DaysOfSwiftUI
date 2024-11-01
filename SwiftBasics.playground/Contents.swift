@@ -130,3 +130,15 @@ enum TeenageMutantNinjaTurtles {
 
 var turtle2 = TeenageMutantNinjaTurtles.donatello
 turtle2 = .raphael
+
+// Day 4 - Type annotations and checkpoint 2
+
+let userName: String
+
+userName = "foobar8008"
+//userName = "new name"
+
+// Checkpoint 2
+
+let arrayOfStrings = ["Happy", "happy", "joy", "joy"]
+print("There are \(arrayOfStrings.count) items in the array. There are \(Set(arrayOfStrings).count) unique items in the array.")
