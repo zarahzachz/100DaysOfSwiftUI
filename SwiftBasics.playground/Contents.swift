@@ -168,3 +168,61 @@ switch transport {
     case .scooter:
         print("Gonna rent a scooter.")
 }
+
+// Day 6 - Loops, summary, and checkpoint 3
+
+for i in 1...12 {
+    print("The \(i) times table:")
+    for j in 1...12 {
+        print("  \(i) x \(j) = \(i * j)")
+    }
+    print()
+}
+
+//var diceRoll = 0
+var diceRoll = Int()
+
+while diceRoll != 20 {
+    diceRoll = Int.random(in: 1...20)
+    print("I rolled a \(diceRoll).")
+}
+
+print("Critical hit!")
+
+let filenames = ["me.jpg", "resume.txt", "sophie.jpg"]
+for filename in filenames {
+    if filename.hasSuffix("jpg") == false {
+        continue
+    }
+    
+    print("Found picture: \(filename)")
+}
+
+let number1 = 7
+let number2 = 17
+var multiples = [Int]()
+for i in 1...100_000 {
+    if i.isMultiple(of: number1) && i.isMultiple(of: number2) {
+        multiples.append(i)
+        
+        if multiples.count > 10 {
+            break
+        }
+    }
+}
+
+print(multiples)
+
+// Checkpoint 3
+
+for i in 1...100 {
+    if i.isMultiple(of: 3) && i.isMultiple(of: 5) {
+        print("FizzBuzz")
+    } else if i.isMultiple(of: 5) {
+        print("Buzz")
+    } else if i.isMultiple(of: 3) {
+        print("Fizz")
+    } else {
+        print(i)
+    }
+}
