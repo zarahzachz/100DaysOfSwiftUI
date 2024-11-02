@@ -226,3 +226,27 @@ for i in 1...100 {
         print(i)
     }
 }
+
+// Day 7 - Functions, parameters, and return values
+
+func compareStrings(_ str1: String, _ str2: String) -> Bool {
+    str1.sorted() == str2.sorted()
+}
+
+compareStrings("abc", "cbd")
+
+func pythagorus(a: Double, b: Double) -> Double {
+    sqrt(a * a + b * b)
+}
+
+pythagorus(a: 3, b: 4)
+
+func getUser() -> (firstName: String, lastName: String) {
+    (firstName: "Taylor", lastName: "Swift")
+}
+
+//let user = getUser()
+//let firstName = user.firstName
+//let lastName = user.lastName
+let (firstName, lastName) = getUser()
+print("Name: \(firstName) \(lastName)")
