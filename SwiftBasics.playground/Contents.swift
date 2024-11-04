@@ -291,3 +291,60 @@ do {
 } catch {
     print("There was an error.")
 }
+
+// Day 9 - Closures, passing functions into functions, and checkpoint 5
+
+func greetUser() {
+    print("Hello, there!")
+}
+greetUser()
+
+let copyGreetUser = greetUser
+copyGreetUser()
+
+let greetAgain = { (name: String) -> Void in
+    print("Hello, \(name)!")
+}
+greetAgain("Peter")
+
+let team = ["Gloria", "Suzanne", "Piper", "Tiffany", "Tasha"]
+let sortedTeam = team.sorted()
+print(sortedTeam)
+
+func captainFirstSorted(name1: String, name2: String) -> Bool {
+    if name1 == "Suzanne" {
+        return true
+    } else if name2 == "Suzanne" {
+        return false
+    }
+    
+    return name1 < name2
+}
+
+//let captainFirstTeam = team.sorted(by: captainFirstSorted)
+//let captainFirstTeam = team.sorted(by: { (name1: String, name2: String) -> Bool in
+//    if name1 == "Suzanne" {
+//        return true
+//    } else if name2 == "Suzanne" {
+//        return false
+//    }
+//    
+//    return name1 < name2
+//})
+let captainFirstTeam = team.sorted {
+    if $0 == "Suzanne" {
+        return true
+    } else if $1 == "Suzanne" {
+        return false
+    }
+    
+    return $0 < $1
+}
+print(captainFirstTeam)
+
+// Checkpoint 5
+
+let luckyNumbers: [()] = [7, 4, 38, 21, 16, 15, 12, 33, 31, 49]
+    .filter { !$0.isMultiple(of: 2) }
+    .sorted { $0 < $1 } //.sorted()
+    .map { print("\($0) is a lucky number") }
