@@ -250,3 +250,44 @@ func getUser() -> (firstName: String, lastName: String) {
 //let lastName = user.lastName
 let (firstName, lastName) = getUser()
 print("Name: \(firstName) \(lastName)")
+
+// Day 8 - Default values, throwing functions, and checkpoint 4
+
+// Checkpoint 4
+
+enum SquareRootError: Error {
+    case outOfBounds, noRoot
+}
+
+func findSquareRoot(_ num: Int) throws -> Int {
+    var result = Int()
+    
+    if num < 1 || num > 10_000 {
+        throw SquareRootError.outOfBounds
+    }
+    
+    for i in 1...100 {
+        if num == i * i {
+            result = i
+        }
+    }
+    
+    if result == 0 {
+        throw SquareRootError.noRoot
+    }
+    
+    return result
+}
+
+let testNum = 9
+
+do {
+    var result = try findSquareRoot(testNum)
+    print(result)
+} catch SquareRootError.outOfBounds {
+    print("Please use a number greater than 1 and less than 10,000.")
+} catch SquareRootError.noRoot {
+    print("No square root found.")
+} catch {
+    print("There was an error.")
+}
