@@ -348,3 +348,78 @@ let luckyNumbers: [()] = [7, 4, 38, 21, 16, 15, 12, 33, 31, 49]
     .filter { !$0.isMultiple(of: 2) }
     .sorted { $0 < $1 } //.sorted()
     .map { print("\($0) is a lucky number") }
+
+// Day 10 - Structs, computed properties, and property observers
+
+struct Employee {
+    let name: String
+    
+//    var vacationRemaining: Int = 14
+    
+    var vacationAllocated = 14
+    var vacationTaken = 0
+    
+//    mutating func takeVacation(days: Int) {
+//        if vacationRemaining > days {
+//            vacationRemaining -= days
+//            print("I'm going on vacation!")
+//            print("Days remaining: \(vacationRemaining)")
+//        } else {
+//            print("Oops! There aren't enough days remaining.")
+//        }
+//    }
+    
+    var vacationRemaining: Int {
+        get {
+            vacationAllocated - vacationTaken
+        }
+        
+        set {
+            vacationAllocated = vacationTaken + newValue
+        }
+    }
+}
+
+//var archer = Employee(name: "Archer Sterling", vacationRemaining: 20)
+//archer.takeVacation(days: 5)
+
+var archer = Employee(name: "Sterling Archer")
+archer.vacationTaken += 4
+archer.vacationRemaining = 5
+archer.vacationTaken += 4
+archer.vacationRemaining
+archer.vacationAllocated
+
+struct App {
+    var contacts = [String]() {
+        willSet {
+            print("Current value: \(contacts)")
+            print("New value will be: \(newValue)")
+        }
+        
+        didSet {
+            print("There are now \(contacts.count) contacts")
+            print("Old value was: \(oldValue)")
+        }
+    }
+}
+
+var app = App()
+app.contacts.append("Sterling Archer")
+app.contacts.append("Lana Kane")
+app.contacts.append("Pam Poovey")
+
+struct Player {
+    let name: String
+    let number: Int
+    
+    init(name: String) {
+        self.name = name // tried setting to `foo` but swift yelled at me. seems it has to have same name as the property?
+        self.number = Int.random(in: 1...100)
+    }
+}
+
+let player = Player(name: "Pete Rose")
+player.name
+player.number
+player.number // the number isn't constant and can change every time its called. interesting because number is a `let`
