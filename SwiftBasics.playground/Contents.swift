@@ -502,3 +502,68 @@ buick.currentGear
 buick.changeGear(direction: "down")
 buick.currentGear
 
+// Day 12 - Classes, inheritance, and checkpoint 7
+
+// Checkpoint 7
+
+class Animal {
+    let numberOfLegs = 4
+}
+
+class Dog: Animal {
+    func speak() {
+        print("Woof woof!")
+    }
+}
+
+class Cat: Animal {
+    let isTame: Bool
+    
+    func speak() {
+        print("Meow!")
+    }
+    
+    init(isTame: Bool) {
+        self.isTame = isTame
+    }
+}
+
+class Corgi: Dog {
+    override func speak() {
+        print("Yap yap!")
+    }
+}
+
+let corgi = Corgi()
+corgi.numberOfLegs
+corgi.speak()
+
+class Poodle: Dog {
+    override func speak() {
+        print("Bark bark!")
+    }
+}
+
+let poodle = Poodle()
+poodle.speak()
+
+class Persian: Cat {
+    override func speak() {
+        print("Purrrrr...")
+    }
+}
+
+let persian = Persian(isTame: true)
+persian.numberOfLegs
+persian.speak()
+
+class Lion: Cat {
+    override func speak() {
+        print("ROAR!")
+    }
+}
+
+let lion = Lion(isTame: false)
+lion.speak()
+lion.isTame
+
