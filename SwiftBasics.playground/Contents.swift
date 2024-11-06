@@ -423,3 +423,82 @@ let player = Player(name: "Pete Rose")
 player.name
 player.number
 player.number // the number isn't constant and can change every time its called. interesting because number is a `let`
+
+// Day 11 - Access control, static properties and methods, and checkpoint 6
+
+struct BankAccount {
+    private(set) var funds = 0
+    
+    mutating func deposit(amount: Int) {
+        funds += amount
+    }
+    
+    mutating func withdraw(amount: Int) -> Bool {
+        if funds >= amount {
+            funds -= amount
+            return true
+        } else {
+            return false
+        }
+    }
+}
+
+var account = BankAccount()
+account.funds
+account.deposit(amount: 100)
+//account.funds = 10_000
+account.withdraw(amount: 30)
+account.funds
+
+struct AppData {
+    static let version = "1.3.beta.2"
+    static let saveFilename = "settings.json"
+    static let homeURL = "https://www.apple.com"
+}
+
+AppData.version
+
+struct Employee11 {
+    let username: String
+    let password: String
+    
+    static let example = Employee11(username: "foo-bar", password: "baz123!")
+}
+
+Employee11.example.username
+
+// Checkpoint 6
+
+struct Car {
+    let model: String
+    let numberOfSeats: Int
+    private(set) var currentGear: Int
+    
+    init(model: String, numberOfSeats: Int, currentGear: Int) {
+        self.model = model
+        self.numberOfSeats = numberOfSeats
+        self.currentGear = currentGear
+    }
+    
+    mutating func changeGear(direction: String) -> Bool {
+        if direction == "up" && currentGear != 6 {
+            currentGear += 1
+            return true
+        } else if direction == "down" && currentGear != 1 {
+            currentGear -= 1
+            return true
+        } else {
+            return false
+        }
+    }
+}
+
+var buick = Car(model: "Buick", numberOfSeats: 6, currentGear: 5)
+
+buick.changeGear(direction: "up")
+buick.currentGear
+buick.changeGear(direction: "up")
+buick.currentGear
+buick.changeGear(direction: "down")
+buick.currentGear
+
