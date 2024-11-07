@@ -567,3 +567,50 @@ let lion = Lion(isTame: false)
 lion.speak()
 lion.isTame
 
+// Day 13 – Protocols, extensions, and checkpoint 8
+
+// Checkpoint 8
+
+protocol Building {
+    var numberOfRooms: Int { get }
+    var cost: Int { get set }
+    var agentName: String { get }
+    var buildingType: String { get }
+    
+    func salesSummary()
+}
+
+extension Building {
+    func salesSummary() {
+        print("\(buildingType) has \(numberOfRooms) rooms and is being sold by \(agentName) for $\(cost).")
+    }
+}
+
+struct House: Building {
+    var numberOfRooms = 4
+    
+    var cost = 250_000
+    
+    var buildingType = "House"
+    
+    let agentName = "Bill"
+}
+
+var house = House()
+house.salesSummary()
+
+var cottage = House(cost: 450_000)
+cottage.salesSummary()
+
+struct Office: Building {
+    var numberOfRooms = 1
+    
+    var cost: Int
+    
+    let buildingType = "Office"
+    
+    let agentName = "Marie"
+}
+       
+var office = Office(numberOfRooms: 3, cost: 300_000)
+office.salesSummary()
