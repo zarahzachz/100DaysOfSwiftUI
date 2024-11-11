@@ -614,3 +614,27 @@ struct Office: Building {
        
 var office = Office(numberOfRooms: 3, cost: 300_000)
 office.salesSummary()
+
+// Day 14 – Optionals, nil coalescing, and checkpoint 9
+
+enum UserError: Error {
+    case badID, networkFailed
+}
+
+func getUserID(id: Int) throws -> String {
+    throw UserError.networkFailed
+}
+
+if let user = try? getUserID(id: 23) {
+    print("User: \(user)")
+}
+
+let user = (try? getUserID(id: 23)) ?? "Anonymous"
+print(user)
+
+// Checkpoint 9
+
+func randomArrayItem(arr: [Int]?) -> Int { arr?.randomElement() ?? Int.random(in: 1...100) }
+
+randomArrayItem(arr: [1, 2, 3, 4, 5])
+randomArrayItem(arr: nil)
