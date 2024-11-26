@@ -66,6 +66,7 @@ struct ContentView: View {
                 
                 Section("Total amount") {
                     Text(checkAmount + (checkAmount * Double(tipPercentage) / 100), format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                        .foregroundColor(tipPercentage == 0 ? .red : .primary)
                 }
                 
             }
