@@ -41,6 +41,10 @@ struct ContentView: View {
     @State private var turn = 1
     @State private var showingReset = false
     
+// animation vars
+    @State private var tappedButton: Int? = nil
+    @State private var isAnimating = false
+    
     var body: some View {
         ZStack {
 //            LinearGradient(colors: [.blue, .black], startPoint: .top, endPoint: .bottom)
@@ -76,6 +80,17 @@ struct ContentView: View {
                         } label: {
                             FlagImage(country: countries[number])
                         }
+                        .rotation3DEffect(
+                            .degrees(tappedButton == number && isAnimating ? 360 : 0),
+                            axis: (x: 0, y: 1, z: 0)
+                        )
+                        .scaleEffect(
+                            tappedButton == number || tappedButton == nil ? 1.0 : 0.8
+                        )
+                        .opacity(
+                            tappedButton == number || tappedButton == nil ? 1.0 : 0.25
+                        )
+                        .animation(.easeInOut(duration: 0.5), value: tappedButton)
                     }
                 }
                 .frame(maxWidth: .infinity)
@@ -114,6 +129,12 @@ struct ContentView: View {
             if score < 8 {
                 score += 1
             }
+            
+            withAnimation {
+                isAnimating = true
+            }
+            
+            tappedButton = number
         } else {
             scoreTitle = "Wrong! That's the \(countries[number]) flag."
             
@@ -133,6 +154,9 @@ struct ContentView: View {
     func askQuestion() {
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
+        
+        tappedButton = nil
+        isAnimating = false
     }
     
     func resetGame() {
